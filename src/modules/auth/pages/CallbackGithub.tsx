@@ -1,0 +1,30 @@
+import { FireIcon } from '@/components/Icons'
+import { useUserStore } from '@/lib/stores'
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router'
+import { getGithubData } from '../lib/services'
+
+export default function CallbackGithub() {
+  const { setUser } = useUserStore()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    getGithubData({ search: window.location.search })
+      .then((user) => {
+        setUser(user)
+        navigate('/dashboard', { replace: true })
+      })
+      .catch((e) => {
+        console.error('Error fetching user data:', e)
+        navigate('/signin', { replace: true })
+      })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  return (
+    <main className="min-h-screen flex flex-col justify-center items-center">
+      <FireIcon />
+      <h2 className="font-semibold text-center">Loading...</h2>
+    </main>
+  )
+}

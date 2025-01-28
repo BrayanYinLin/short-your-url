@@ -1,0 +1,17 @@
+@keyframes modal_appear {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.modal {
+  width: 30vw;
+  height: 30vh;
+  padding: 16px;
+  background: white;
+  border-radius: 5px;
+  animation: modal_appear 0.3s ease both;
+}
