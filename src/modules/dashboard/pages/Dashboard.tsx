@@ -1,9 +1,7 @@
-import { MiniShortYourURLIcon } from '@/components/Icons'
 import { User, useUserStore } from '@/lib/stores'
 import { useEffect } from 'react'
-import { SearchButton } from '../components/SearchButton'
-import { GridLinks } from '../components/GridLinks'
-import { Profile } from '../components/Profile'
+import { Outlet } from 'react-router'
+import { HeaderProfile } from '../components/HeaderProfile'
 
 export function Dashboard() {
   const { user, setUser } = useUserStore()
@@ -25,32 +23,11 @@ export function Dashboard() {
   }, [])
 
   return (
-    <>
-      <header className="w-[660px] mx-auto flex justify-between p-6">
-        <div className="flex justify-center gap-2">
-          <MiniShortYourURLIcon />
-          <h1 className="font-bold text-xl">Short Your URL</h1>
-        </div>
-        <div className="flex justify-center gap-[30px]">
-          <SearchButton />
-          <Profile avatar={user!.avatar} name={user!.name} />
-        </div>
+    <main className="max-w-[700px] mx-auto pt-5 grid grid-cols-2">
+      <header className="float-left col-start-1 flex items-start justify-start gap-2">
+        {user && <HeaderProfile user={user} />}
       </header>
-      <main className="w-[660px] mx-auto p-6">
-        <section className="w-full flex flex-row justify-center items-center border-b-[1px] border-[#808080]">
-          <button type="button" className="w-1/2 pb-4 text-lg font-semibold">
-            Links
-          </button>
-          <button type="button" className="w-1/2 pb-4 text-lg font-semibold">
-            Account
-          </button>
-          {/* <div className='border-2'></div> */}
-        </section>
-
-        <div className="grid grid-cols-2 gap-6 p-6">
-          <GridLinks />
-        </div>
-      </main>
-    </>
+      <Outlet />
+    </main>
   )
 }

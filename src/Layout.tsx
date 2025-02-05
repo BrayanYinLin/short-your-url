@@ -7,6 +7,7 @@ import { GoogleOAuthProvider } from '@react-oauth/google'
 import CallbackGithubPage from './modules/auth/pages/CallbackGithub'
 import './index.css'
 import { Dashboard } from './modules/dashboard/pages/Dashboard'
+import { Links } from 'modules/dashboard/pages/Links'
 
 createRoot(document.getElementById('root')!).render(
   <GoogleOAuthProvider clientId="174193391282-o23rmhmrf6vmv3i4l9b5ft6ltaa5rr73.apps.googleusercontent.com">
@@ -15,7 +16,9 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/" element={<Home />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/auth/github/callback" element={<CallbackGithubPage />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard />}>
+          <Route index element={<Links />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   </GoogleOAuthProvider>

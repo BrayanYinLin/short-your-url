@@ -2,7 +2,7 @@ import { ENDPOINTS } from '@/lib/definitions'
 import { Link } from 'root/types'
 
 export const getUserLinks = async (): Promise<Link[]> => {
-  const response = await fetch(ENDPOINTS.LINKS, {
+  const response = await fetch(`${ENDPOINTS.LINKS}/user/`, {
     method: 'GET',
     credentials: 'include'
   })

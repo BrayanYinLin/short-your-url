@@ -1,4 +1,5 @@
 import { Overlay } from '@/components/Overlay'
+import { CloseIcon } from '@/components/Icons'
 import '../styles/search-panel.css'
 
 export function SearchPanel({ toggle }: { toggle: () => void }) {
@@ -7,10 +8,11 @@ export function SearchPanel({ toggle }: { toggle: () => void }) {
       <section className="modal">
         <button
           type="button"
-          className="bg-white text-black font-semibold px-4 py-2 rounded-md shadow-lg"
+          className="float-right px-4 py-2 rounded-md"
           onClick={toggle}
+          aria-label="close panel"
         >
-          Close
+          <CloseIcon />
         </button>
       </section>
     </Overlay>
