@@ -32,27 +32,33 @@ export const getGithubData = async ({ search }: { search: string }) => {
   }
 }
 
-export const authenticateGoogle = async (credential: string) => {
-  try {
-    const response = await fetch('http://localhost:5373/api/auth/google', {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ token: credential })
-    })
+export const authenticateGoogle = async ({ search }: { search: string }) => {
+  const urlParams = new URLSearchParams(search)
+  const code = urlParams.get('id_token')
 
-    if (!response.ok) {
-      const { msg } = await response.json()
-      throw new GoogleAuthenticationError(msg)
-    }
-    const user = await response.json()
+  if (code) {
+    try {
+      const response = await fetch(
+        `http://localhost:5373/api/auth/google/callback?code=${code}`,
+        {
+          method: 'GET',
+          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      )
 
-    return user
-  } catch (e) {
-    if (e instanceof GoogleAuthenticationError) {
-      console.error(e.message)
+      if (!response.ok) {
+        throw new GoogleAuthenticationError('Error fetching user data')
+      }
+
+      const user = await response.json()
+      localStorage.setItem('user', JSON.stringify(user))
+
+      return user
+    } catch (e) {
+      console.error('Error fetching user data:', e)
       throw e
     }
   }
