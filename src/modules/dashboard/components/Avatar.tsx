@@ -15,10 +15,10 @@ export function Avatar({ url, name }: ProfileProps) {
   return (
     <button
       type="button"
-      className="w-[45px] h-[45px] rounded-full border-[3px] border-[#fff] transition-all duration-200 hover:border-[#222222]"
+      className="w-[35px] h-[35px] rounded-full border-[3px] border-[#fff] transition-all duration-200 hover:border-[#222222]"
       onClick={handleClick}
     >
-      <img src={url ?? ''} alt={name} width={45} className="rounded-full" />
+      <img src={url ?? ''} alt={name} width={35} className="rounded-full" />
       {toggle && (
         <section className="rounded-md relative w-20 top-2 right-10 bg-white p-1 border-[1px] border-[#808080]">
           <button type="button">Log Out</button>

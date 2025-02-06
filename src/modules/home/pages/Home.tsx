@@ -25,7 +25,7 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center">
+    <main className="bg-pattern bg-repeat min-h-screen flex flex-col items-center justify-center">
       <ShortYourURLIcon />
 
       <h1 className="font-bold text-4xl my-2">Short Your URL</h1>

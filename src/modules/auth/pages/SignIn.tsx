@@ -26,6 +26,7 @@ export default function SignIn() {
       const user = await authenticateGoogle(credential!)
 
       setUser(user)
+      localStorage.setItem('user', JSON.stringify(user))
       navigate('/dashboard', { replace: true })
     } catch (e) {
       console.error(e)
@@ -40,13 +41,13 @@ export default function SignIn() {
     console.log('Error authenticating')
   }
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center">
+    <main className="bg-pattern bg-repeat min-h-screen flex flex-col items-center justify-center">
       <ShortYourURLIcon />
       <section className="m-4 flex flex-col">
         <GoogleLogin onSuccess={handleSignIn} onError={handleError} />
         <button
           type="button"
-          className="flex gap-2 font-semibold px-4 py-2 border-[1px] border-[#808080] my-2 rounded-md"
+          className="flex gap-2 font-semibold px-4 py-2 border-[1px] bg-white border-[#808080] my-2 rounded-md"
           onClick={handleGithubSignIn}
         >
           <GitHubIcon />

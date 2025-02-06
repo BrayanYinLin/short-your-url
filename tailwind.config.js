@@ -8,6 +8,13 @@ export default {
     extend: {
       fontFamily: {
         inter: ['Inter', 'system-ui', 'sans-serif']
+      },
+      backgroundImage: {
+        pattern: "url(/background.webp)"
+      },
+      colors: {
+        'black-hue': '#222C34',
+        'white-hue': '#FEFEFE'
       }
     },
   },
