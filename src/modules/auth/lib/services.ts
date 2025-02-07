@@ -34,7 +34,7 @@ export const getGithubData = async ({ search }: { search: string }) => {
 
 export const authenticateGoogle = async ({ search }: { search: string }) => {
   const urlParams = new URLSearchParams(search)
-  const code = urlParams.get('id_token')
+  const code = urlParams.get('code')
 
   if (code) {
     try {

@@ -15,3 +15,16 @@ export const getUserLinks = async (): Promise<Link[]> => {
 
   return links
 }
+
+export const logoutUser = async (): Promise<boolean> => {
+  const response = await fetch(`${ENDPOINTS.AUTH}/logout`, {
+    method: 'GET',
+    credentials: 'include'
+  })
+
+  if (!response.ok) {
+    throw new Error('there was an error at logout')
+  }
+
+  return true
+}

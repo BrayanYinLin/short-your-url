@@ -1,22 +1,22 @@
 import { FireIcon } from '@/components/Icons'
 import { useUserStore } from '@/lib/stores'
 import { useEffect } from 'react'
-// import { useNavigate } from 'react-router'
+import { useNavigate } from 'react-router'
 import { authenticateGoogle } from '../lib/services'
 
 export default function CallbackGoogle() {
   const { setUser } = useUserStore()
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
 
   useEffect(() => {
-    authenticateGoogle({ search: window.location.hash.substring(1) })
+    authenticateGoogle({ search: window.location.search })
       .then((user) => {
         setUser(user)
-        // navigate('/dashboard', { replace: true })
+        navigate('/dashboard', { replace: true })
       })
       .catch((e) => {
         console.error('Error fetching user data:', e)
-        // navigate('/signin', { replace: true })
+        navigate('/signin', { replace: true })
       })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
