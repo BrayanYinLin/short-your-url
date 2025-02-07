@@ -23,7 +23,7 @@ export function Dashboard() {
   }, [])
 
   return (
-    <main className="max-w-[700px] mx-auto pt-5 grid grid-cols-2">
+    <main className="bg-pattern max-w-[700px] mx-auto pt-5 grid grid-cols-2">
       <header className="float-left col-start-1 flex items-start justify-start gap-2">
         {user && <HeaderProfile user={user} />}
       </header>
