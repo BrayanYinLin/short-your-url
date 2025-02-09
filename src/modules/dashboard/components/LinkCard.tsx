@@ -9,13 +9,15 @@ import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { Link } from 'root/types'
 import { DeleteModal } from './DeleteModal'
+import { ORIGINS } from '@/lib/definitions'
 
 export function LinkCard({ long, short, clicks }: Link) {
   const [copied, setCopied] = useState(false)
   const [modal, setModal] = useState(false)
 
   const copyToClipboard = (link: string) => {
-    navigator.clipboard.writeText(link)
+    const url = `${ORIGINS.LOCAL}${link}`
+    navigator.clipboard.writeText(url)
     setCopied(true)
   }
 
@@ -28,7 +30,7 @@ export function LinkCard({ long, short, clicks }: Link) {
   }, [copied])
 
   return (
-    <article className="bg-white-hue border-[1px] border-[#808080] rounded-md p-3 flex gap-4 flex-col justify-between">
+    <article className="bg-white-hue border-[1px] border-black-hue rounded-md p-3 flex gap-4 flex-col justify-between">
       {modal &&
         createPortal(
           <DeleteModal close={() => setModal(false)} />,
@@ -49,7 +51,7 @@ export function LinkCard({ long, short, clicks }: Link) {
             type="button"
             aria-label="copy icon"
             className="p-1 rounded hover:bg-slate-100 transition-all duration-200"
-            onClick={() => copyToClipboard(long)}
+            onClick={() => copyToClipboard(short)}
           >
             {copied ? <CopiedSuccessfullyIcon /> : <CopyIcon />}
           </button>

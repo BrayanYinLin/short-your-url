@@ -4,7 +4,7 @@ import {
   LinkedInIcon,
   ShortYourURLIcon
 } from '@/components/Icons'
-import { auth } from '../lib/services'
+import { quickAuthentication } from '../lib/services'
 import { useUserStore } from '@/lib/stores'
 import { useNavigate } from 'react-router'
 
@@ -13,7 +13,7 @@ export default function Home() {
   const navigate = useNavigate()
 
   const handleStart = () => {
-    auth()
+    quickAuthentication()
       .then((user) => {
         setUser(user)
         navigate('/dashboard')

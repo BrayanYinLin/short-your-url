@@ -1,0 +1,9 @@
+#list-card {
+  scrollbar-width: thin;
+  scrollbar-color: #222C34;
+}
+
+#list-card::-webkit-scrollbar {
+  color: #222C34;
+  width: 3px;
+}

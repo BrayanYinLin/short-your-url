@@ -16,14 +16,28 @@ export function HeaderProfile({ user }: { user: User }) {
         langButton.current &&
         !langButton.current.contains(event.target as Node)
       ) {
-        setLangOpt(false)
+        langButton.current?.classList.replace(
+          'animate-maximize',
+          'animate-minize'
+        )
+        const timer = setTimeout(() => {
+          setLangOpt(false)
+          clearTimeout(timer)
+        }, 300)
       }
 
       if (
         configButton.current &&
         !configButton.current.contains(event.target as Node)
       ) {
-        setConfigOpt(false)
+        configButton.current?.classList.replace(
+          'animate-maximize',
+          'animate-minize'
+        )
+        const timer = setTimeout(() => {
+          setConfigOpt(false)
+          clearTimeout(timer)
+        }, 300)
       }
     }
 
@@ -61,7 +75,7 @@ export function HeaderProfile({ user }: { user: User }) {
             <LanguageIcon />
           </button>
           {langOpt && (
-            <section className="rounded-md absolute w-20 top-10 right-0 bg-white p-1 border-[1px] border-[#808080] flex flex-col">
+            <section className="animate-maximize rounded-md absolute w-20 top-10 right-0 bg-white p-1 border-[1px] border-[#808080] flex flex-col">
               <button type="button">ES</button>
               <button type="button">EN</button>
             </section>
@@ -78,7 +92,7 @@ export function HeaderProfile({ user }: { user: User }) {
             <SettingsIcon />
           </button>
           {configOpt && (
-            <section className="rounded-md absolute w-20 top-10 right-0 bg-white p-1 border-[1px] border-[#808080] flex flex-col">
+            <section className="animate-maximize rounded-md absolute w-20 top-10 right-0 bg-white p-1 border-[1px] border-[#808080] flex flex-col">
               <LogoutButton />
             </section>
           )}

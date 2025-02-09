@@ -10,3 +10,5 @@ const createError = ({ name }: { name: string }) => {
 export const GoogleAuthenticationError = createError({
   name: 'GoogleAuthenticationError'
 })
+
+export const LinkError = createError({ name: 'LinkError' })

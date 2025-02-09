@@ -36,7 +36,8 @@ export default tseslint.config(
           trailingComma: 'none'
         }
       ],
-      'no-explicit-any': 'off'
+      'no-explicit-any': 'off',
+      'react-hooks/exhaustive-deps': 'off'
     },
   },
   configPrettier

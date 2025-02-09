@@ -1,7 +1,7 @@
 import { ENDPOINTS } from '@/lib/definitions'
 import { User } from '@/lib/stores'
 
-export const auth = async () => {
+export const quickAuthentication = async () => {
   try {
     const authenticate = await fetch(ENDPOINTS.AUTH, {
       method: 'GET',
