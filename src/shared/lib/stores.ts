@@ -35,7 +35,10 @@ interface TranslationStore {
 const useTranslationStore = create<TranslationStore>((set, get) => ({
   language: findLanguagePreference(),
   translations: resource,
-  changeLanguage: (lang: Language) => set(() => ({ language: lang })),
+  changeLanguage: (lang: Language) => {
+    set(() => ({ language: lang }))
+    localStorage.setItem('lang-preference', lang)
+  },
   t: (key) => get().translations[get().language][key]
 }))
 
