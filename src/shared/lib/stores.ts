@@ -1,4 +1,6 @@
 import { create } from 'zustand'
+import { Language, resource, Resource, TranslationKeys } from './i18n'
+import { findLanguagePreference } from './utils'
 
 export type User = {
   id?: string
@@ -23,4 +25,18 @@ const useUserStore = create<UserState>((set) => ({
   setUser: (user) => set(() => ({ user: user }))
 }))
 
-export { useUserStore }
+interface TranslationStore {
+  language: Language
+  translations: Resource
+  t: (key: TranslationKeys) => string
+  changeLanguage: (lang: Language) => void
+}
+
+const useTranslationStore = create<TranslationStore>((set, get) => ({
+  language: findLanguagePreference(),
+  translations: resource,
+  changeLanguage: (lang: Language) => set(() => ({ language: lang })),
+  t: (key) => get().translations[get().language][key]
+}))
+
+export { useUserStore, useTranslationStore }
