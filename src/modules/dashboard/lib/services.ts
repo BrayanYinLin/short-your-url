@@ -1,5 +1,6 @@
 import { ENDPOINTS } from '@/lib/definitions'
 import { LinkError } from '@/lib/errors'
+import { User } from 'root/types'
 import { Link } from 'root/types'
 
 export const getUserLinks = async (): Promise<Link[]> => {
@@ -54,7 +55,19 @@ export const createLink = async ({
     throw new LinkError(msg)
   }
 
-  const link = await response.json()
+  const link: Link = await response.json()
 
   return link
+}
+
+export const deleteLink = async ({ id }: Required<Pick<User, 'id'>>) => {
+  const response = await fetch(`${ENDPOINTS.LINKS}${id}`, {
+    method: 'DELETE',
+    credentials: 'include'
+  })
+
+  if (!response.ok) {
+    const { msg } = await response.json()
+    throw new LinkError(msg)
+  }
 }

@@ -1,14 +1,16 @@
-import { Link } from 'root/types'
+import { Link, User } from 'root/types'
 import { create } from 'zustand'
-import { getUserLinks } from './services'
+import { deleteLink, getUserLinks } from './services'
+import { LinkError } from '@/lib/errors'
 
 interface LinksState {
   links: Link[]
   error: string | null
   fetchLinks: () => Promise<void>
+  remove: ({ id }: Required<Pick<User, 'id'>>) => Promise<void>
 }
 
-export const useLinksStore = create<LinksState>((set) => ({
+export const useLinksStore = create<LinksState>((set, get) => ({
   links: [],
   error: null,
   fetchLinks: async () => {
@@ -20,6 +22,20 @@ export const useLinksStore = create<LinksState>((set) => ({
     } catch (e) {
       console.error(e)
       set({ error: 'there was an error' })
+    }
+  },
+  remove: async ({ id }) => {
+    try {
+      await deleteLink({ id })
+
+      await get().fetchLinks()
+    } catch (e) {
+      console.error(e)
+      if (e instanceof LinkError) {
+        set({ error: e.message })
+      } else {
+        set({ error: 'there was an error' })
+      }
     }
   }
 }))
