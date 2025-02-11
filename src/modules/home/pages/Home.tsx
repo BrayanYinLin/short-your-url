@@ -5,11 +5,12 @@ import {
   ShortYourURLIcon
 } from '@/components/Icons'
 import { quickAuthentication } from '../lib/services'
-import { useUserStore } from '@/lib/stores'
+import { useTranslationStore, useUserStore } from '@/lib/stores'
 import { useNavigate } from 'react-router'
 
 export default function Home() {
   const { setUser } = useUserStore()
+  const { t } = useTranslationStore()
   const navigate = useNavigate()
 
   const handleStart = () => {
@@ -36,14 +37,14 @@ export default function Home() {
           className="border-[1px] border-black bg-[#222] text-white rounded-[5px] px-6 py-2 text-xl font-semibold"
           onClick={handleStart}
         >
-          Get Started
+          {t('Get Started')}
         </button>
         <a
           href="#"
           type="button"
-          className="border-[1px] border-black rounded-[5px] px-6 py-2 flex items-center gap-2 text-xl font-semibold"
+          className="border-[1px] bg-white-hue border-black rounded-[5px] px-6 py-2 flex items-center gap-2 text-xl font-semibold"
         >
-          <GitHubIcon /> <span>Star on GitHub</span>
+          <GitHubIcon /> <span>{t('Star on Github')}</span>
         </a>
       </section>
 
