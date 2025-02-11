@@ -11,7 +11,7 @@ import { Link } from 'root/types'
 import { DeleteModal } from './DeleteModal'
 import { ORIGINS } from '@/lib/definitions'
 
-export function LinkCard({ long, short, clicks }: Link) {
+export function LinkCard({ id, long, short, clicks }: Link) {
   const [copied, setCopied] = useState(false)
   const [modal, setModal] = useState(false)
 
@@ -33,7 +33,7 @@ export function LinkCard({ long, short, clicks }: Link) {
     <article className="bg-white-hue border-[1px] border-black-hue rounded-md p-3 flex gap-4 flex-col justify-between">
       {modal &&
         createPortal(
-          <DeleteModal close={() => setModal(false)} />,
+          <DeleteModal id={id!} short={short} close={() => setModal(false)} />,
           document.body
         )}
       <section className="flex justify-between">
