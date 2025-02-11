@@ -2,24 +2,36 @@ import { Suspense, useEffect } from 'react'
 import { LinkCard } from './LinkCard'
 import '../styles/list-cards.css'
 import { useLinksStore } from '../lib/stores'
+import { useNavigate } from 'react-router'
 
 export function ListLinks() {
-  const { fetchLinks, links } = useLinksStore()
+  const { error, fetchLinks, links } = useLinksStore()
+  const navigate = useNavigate()
 
   useEffect(() => {
-    fetchLinks()
+    fetchLinks().then(() => {
+      if (error) {
+        navigate('/', { replace: true })
+      }
+    })
   }, [])
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <div
+      <section
         id="list-card"
-        className="w-1/2 grid grid-cols-1 gap-6 px-6 pb-4 overflow-y-scroll"
+        className="w-1/2 flex flex-col gap-6 px-6 pb-4 overflow-y-scroll"
       >
         {links.map(({ id, long, short, clicks }) => (
-          <LinkCard key={id!} long={long} short={short} clicks={clicks} />
+          <LinkCard
+            key={id!}
+            id={id!}
+            long={long}
+            short={short}
+            clicks={clicks}
+          />
         ))}
-      </div>
+      </section>
     </Suspense>
   )
 }

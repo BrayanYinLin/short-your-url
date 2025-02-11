@@ -1,7 +1,7 @@
 import { Link, User } from 'root/types'
 import { create } from 'zustand'
 import { deleteLink, getUserLinks } from './services'
-import { LinkError } from '@/lib/errors'
+import { LinkError, TokenNotRefreshed } from '@/lib/errors'
 
 interface LinksState {
   links: Link[]
@@ -21,7 +21,11 @@ export const useLinksStore = create<LinksState>((set, get) => ({
       set({ links: links })
     } catch (e) {
       console.error(e)
-      set({ error: 'there was an error' })
+      if (e instanceof TokenNotRefreshed) {
+        set({ error: e.message })
+      } else {
+        set({ error: 'there was an error' })
+      }
     }
   },
   remove: async ({ id }) => {
