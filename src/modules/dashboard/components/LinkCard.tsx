@@ -10,10 +10,12 @@ import { createPortal } from 'react-dom'
 import { Link } from 'root/types'
 import { DeleteModal } from './DeleteModal'
 import { ORIGINS } from '@/lib/definitions'
+import { EditLink } from './EditLink'
 
 export function LinkCard({ id, long, short, clicks }: Link) {
   const [copied, setCopied] = useState(false)
-  const [modal, setModal] = useState(false)
+  const [removeModal, setRemoveModal] = useState(false)
+  const [editModal, setEditModal] = useState<boolean>(false)
 
   const copyToClipboard = (link: string) => {
     const url = `${ORIGINS.LOCAL}${link}`
@@ -31,9 +33,18 @@ export function LinkCard({ id, long, short, clicks }: Link) {
 
   return (
     <article className="bg-white-hue border-[1px] border-black-hue rounded-md p-3 flex gap-4 flex-col justify-between">
-      {modal &&
+      {removeModal &&
         createPortal(
-          <DeleteModal id={id!} short={short} close={() => setModal(false)} />,
+          <DeleteModal
+            id={id!}
+            short={short}
+            close={() => setRemoveModal(false)}
+          />,
+          document.body
+        )}
+      {editModal &&
+        createPortal(
+          <EditLink id={id!} short={short} close={() => setEditModal(false)} />,
           document.body
         )}
       <section className="flex justify-between">
@@ -59,6 +70,7 @@ export function LinkCard({ id, long, short, clicks }: Link) {
             type="button"
             aria-label="edit icon"
             className="p-1 rounded hover:bg-slate-100 transition-all duration-200"
+            onClick={() => setEditModal(true)}
           >
             <EditIcon />
           </button>
@@ -66,7 +78,7 @@ export function LinkCard({ id, long, short, clicks }: Link) {
             type="button"
             aria-label="trash icon"
             className="p-1 rounded hover:bg-slate-100 transition-all duration-200"
-            onClick={() => setModal(true)}
+            onClick={() => setRemoveModal(true)}
           >
             <TrashIcon />
           </button>

@@ -1,5 +1,10 @@
 import { ENDPOINTS } from '@/lib/definitions'
-import { LinkError, UnexpectedError, UserNotAuthorized } from '@/lib/errors'
+import {
+  LinkError,
+  UnauthorizedAction,
+  UnexpectedError,
+  UserNotAuthorized
+} from '@/lib/errors'
 import { refreshUser } from '@/lib/services'
 import { User } from 'root/types'
 import { Link } from 'root/types'
@@ -97,4 +102,24 @@ export const deleteLink = async ({ id }: Required<Pick<User, 'id'>>) => {
     const { msg } = await response.json()
     throw new LinkError(msg)
   }
+}
+
+export const editLink = async ({ id, long }: Pick<Link, 'id' | 'long'>) => {
+  const response = await fetch(`${ENDPOINTS.LINKS}${id}`, {
+    method: 'PATCH',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8'
+    },
+    body: JSON.stringify({ long })
+  })
+
+  if (response.status === 401) {
+    const { msg } = await response.json()
+    throw new UnauthorizedAction(msg)
+  }
+
+  const link: Link = await response.json()
+
+  return link
 }

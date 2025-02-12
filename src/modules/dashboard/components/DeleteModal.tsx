@@ -41,17 +41,17 @@ export function DeleteModal({
   return (
     <Overlay>
       <section
-        className="animate-maximize bg-white rounded-md min-w-72 p-4"
+        className="animate-maximize bg-white rounded-md min-w-96 p-2"
         ref={modal}
       >
-        <h3 className="text-xl font-semibold">
+        <h3 className="text-lg font-semibold">
           {t('Delete Prompt')} <span className="font-bold">/{short}</span>?
         </h3>
 
         <div className="w-full flex flex-row mt-4 gap-2">
           <button
             type="button"
-            className="w-1/2 py-2 px-6 rounded text-lg font-medium bg-slate-200"
+            className="w-1/2 py-2 px-6 rounded text-base font-medium bg-slate-200"
             onClick={handleClose}
             aria-label="close panel"
           >
@@ -59,7 +59,7 @@ export function DeleteModal({
           </button>
           <button
             type="button"
-            className="w-1/2 py-2 px-6 rounded text-lg font-medium bg-[#d3102f] text-white-hue"
+            className="w-1/2 py-2 px-6 rounded text-base font-medium bg-[#d3102f] text-white-hue"
             onClick={() => handleDelete(id)}
           >
             {t('Delete')}

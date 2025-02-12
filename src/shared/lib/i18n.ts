@@ -12,7 +12,10 @@ export const resource = {
     'Delete Prompt': 'Do you want to delete',
     Delete: 'Delete link',
     Cancel: 'Cancel',
-    'Logout': 'Logout'
+    'Edit Confirmation': 'Edit link',
+    'Logout': 'Logout',
+    'Edit Title': 'Edit',
+    'Link': 'Link'
   },
   es: {
     'Get Started': 'Empezar',
@@ -26,7 +29,10 @@ export const resource = {
     'Delete Prompt': '¿Quieres borrar ',
     Delete: 'Eliminar enlace',
     Cancel: 'Cancelar',
-    'Logout': 'Cerrar sesión'
+    'Edit Confirmation': 'Editar enlace',
+    'Logout': 'Cerrar sesión',
+    'Edit Title': 'Editar',
+    'Link': 'Enlace'
   }
 }
 
