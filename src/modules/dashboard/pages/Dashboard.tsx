@@ -1,30 +1,14 @@
-import { User, useUserStore } from '@/lib/stores'
-import { useEffect } from 'react'
 import { HeaderProfile } from '../components/HeaderProfile'
 import { ListLinks } from '../components/ListLinks'
 import LinkForm from '../components/LinkForm'
 import { createPortal } from 'react-dom'
 import { Toast } from '../components/Toast'
 import { useToast } from '../hooks/useToast'
+import { useUser } from '../hooks/useUser'
 
 export function Dashboard() {
-  const { user, setUser } = useUserStore()
+  const { user } = useUser()
   const { toast, setToast } = useToast()
-
-  useEffect(() => {
-    if (user == null) {
-      const jsonUser = localStorage.getItem('user')
-
-      if (jsonUser) {
-        try {
-          const parsedUser: User = JSON.parse(jsonUser)
-          setUser(parsedUser)
-        } catch (error) {
-          console.error('Error parsing user from localStorage:', error)
-        }
-      }
-    }
-  }, [])
 
   return (
     <main className="bg-pattern h-screen overflow-y-hidden">

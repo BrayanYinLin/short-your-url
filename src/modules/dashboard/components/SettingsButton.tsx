@@ -41,7 +41,7 @@ export function SettingsButton() {
         <SettingsIcon />
       </button>
       {settings && (
-        <section className="animate-maximize rounded-md absolute w-20 top-10 left-[-25px] bg-white p-1 border-[1px] border-[#808080] flex flex-col">
+        <section className="animate-maximize rounded-md absolute w-20 top-10 left-0 bg-white p-1 border-[1px] border-[#808080] flex flex-col">
           <LogoutButton />
         </section>
       )}

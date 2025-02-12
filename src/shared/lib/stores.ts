@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import { Language, resource, Resource, TranslationKeys } from './i18n'
 import { findLanguagePreference } from './utils'
+import { authentication } from 'modules/home/lib/services'
 
 export type User = {
   id?: string
@@ -18,11 +19,23 @@ export type User = {
 interface UserState {
   user: User | null
   setUser: (user: User) => void
+  auth: () => Promise<void>
 }
 
 const useUserStore = create<UserState>((set) => ({
   user: null,
-  setUser: (user) => set(() => ({ user: user }))
+  error: null,
+  setUser: (user) => set(() => ({ user: user })),
+  auth: async () => {
+    try {
+      const user = await authentication()
+
+      set({ user: user })
+    } catch (e) {
+      set({ user: null })
+      throw e
+    }
+  }
 }))
 
 interface TranslationStore {

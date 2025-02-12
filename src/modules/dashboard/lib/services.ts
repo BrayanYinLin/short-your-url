@@ -1,24 +1,8 @@
 import { ENDPOINTS } from '@/lib/definitions'
-import {
-  LinkError,
-  TokenNotRefreshed,
-  UnexpectedError,
-  UserNotAuthorized
-} from '@/lib/errors'
+import { LinkError, UnexpectedError, UserNotAuthorized } from '@/lib/errors'
+import { refreshUser } from '@/lib/services'
 import { User } from 'root/types'
 import { Link } from 'root/types'
-
-export const refreshUser = async () => {
-  const response = await fetch(`${ENDPOINTS.AUTH}refresh`, {
-    method: 'GET',
-    credentials: 'include'
-  })
-
-  if (!response.ok) {
-    const { msg } = await response.json()
-    throw new TokenNotRefreshed(msg)
-  }
-}
 
 const getUserAuthorizedLinks = async (): Promise<Link[]> => {
   const response = await fetch(`${ENDPOINTS.LINKS}user/`, {
