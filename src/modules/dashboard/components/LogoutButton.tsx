@@ -1,7 +1,9 @@
 import { useNavigate } from 'react-router'
 import { logoutUser } from '../lib/services'
+import { useTranslationStore } from '@/lib/stores'
 
 export function LogoutButton() {
+  const { t } = useTranslationStore()
   const navigate = useNavigate()
 
   const handleLogout = async () => {
@@ -9,8 +11,8 @@ export function LogoutButton() {
   }
 
   return (
-    <button type="button" onClick={handleLogout}>
-      Log Out
+    <button type="button" className="text-[#d3102f]" onClick={handleLogout}>
+      {t('Logout')}
     </button>
   )
 }

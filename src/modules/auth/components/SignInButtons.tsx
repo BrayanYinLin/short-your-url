@@ -1,6 +1,8 @@
 import { GitHubIcon, GoogleIcon } from '@/components/Icons'
+import { useTranslationStore } from '@/lib/stores'
 
 export const GoogleSignInButton = () => {
+  const { t } = useTranslationStore()
   const handleSignIn = async () => {
     const response = await fetch('http://localhost:5373/api/auth/google')
     const { link } = await response.json()
@@ -14,12 +16,13 @@ export const GoogleSignInButton = () => {
       onClick={handleSignIn}
     >
       <GoogleIcon />
-      Continue with Google
+      {t('Continue Google')}
     </button>
   )
 }
 
 export const GithubSignInButton = () => {
+  const { t } = useTranslationStore()
   const handleGithubSignIn = async () => {
     const response = await fetch('http://localhost:5373/api/auth/github')
     const { link } = await response.json()
@@ -33,7 +36,7 @@ export const GithubSignInButton = () => {
       onClick={handleGithubSignIn}
     >
       <GitHubIcon />
-      Continue with GitHub
+      {t('Continue GitHub')}
     </button>
   )
 }

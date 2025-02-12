@@ -7,6 +7,7 @@ import {
 import { quickAuthentication } from '../lib/services'
 import { useTranslationStore, useUserStore } from '@/lib/stores'
 import { useNavigate } from 'react-router'
+import { LanguageButton } from '@/components/LanguageButton'
 
 export default function Home() {
   const { setUser } = useUserStore()
@@ -27,6 +28,9 @@ export default function Home() {
 
   return (
     <main className="bg-pattern bg-repeat min-h-screen flex flex-col items-center justify-center">
+      <div className="fixed top-3 right-3">
+        <LanguageButton />
+      </div>
       <ShortYourURLIcon />
 
       <h1 className="font-bold text-4xl my-2">Short Your URL</h1>

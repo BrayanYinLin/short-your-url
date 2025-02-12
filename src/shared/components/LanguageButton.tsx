@@ -1,7 +1,9 @@
 import { LanguageIcon } from '@/components/Icons'
+import { useTranslationStore } from '@/lib/stores'
 import { useEffect, useRef, useState } from 'react'
 
 export function LanguageButton() {
+  const { changeLanguage } = useTranslationStore()
   const languageButton = useRef<HTMLButtonElement | null>(null)
   const [languageStateButton, setLanguageStateButton] = useState<boolean>(false)
 
@@ -40,9 +42,21 @@ export function LanguageButton() {
         <LanguageIcon />
       </button>
       {languageStateButton && (
-        <section className="animate-maximize rounded-md absolute w-20 top-10 right-0 bg-white p-1 border-[1px] border-[#808080] flex flex-col">
-          <button type="button">ES</button>
-          <button type="button">EN</button>
+        <section className="animate-maximize rounded-md absolute w-24 top-10 right-0 bg-white border-[1px] border-[#808080] flex flex-col">
+          <button
+            type="button"
+            className="rounded-t-md bg-white hover:bg-slate-200"
+            onClick={() => changeLanguage('es')}
+          >
+            ES
+          </button>
+          <button
+            type="button"
+            className="rounded-b-md bg-white hover:bg-slate-200"
+            onClick={() => changeLanguage('en')}
+          >
+            EN
+          </button>
         </section>
       )}
     </div>
