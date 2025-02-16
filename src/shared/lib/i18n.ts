@@ -15,15 +15,16 @@ export const resource = {
     'Edit Confirmation': 'Edit link',
     'Logout': 'Logout',
     'Edit Title': 'Edit',
-    'Link': 'Link'
+    'Link': 'Link',
+    'Search Placeholder': 'Search link by short name...'
   },
   es: {
     'Get Started': 'Empezar',
     'Star on Github': 'Danos una estrella en GitHub',
     'Continue Google': 'Continuar con Google',
     'Continue GitHub': 'Continuar con GitHub',
-    'Create Shortened Link': 'Crear enlace acortado',
-    'Shorten': 'Acortar link',
+    'Create Shortened Link': 'Crear enlace recortado',
+    'Shorten': 'Recortar link',
     'Creating Link Error': 'Ocurrió un error al crear el enlace',
     'New Link Confirmation': 'Enlace corto creado exitosamente',
     'Delete Prompt': '¿Quieres borrar ',
@@ -32,7 +33,8 @@ export const resource = {
     'Edit Confirmation': 'Editar enlace',
     'Logout': 'Cerrar sesión',
     'Edit Title': 'Editar',
-    'Link': 'Enlace'
+    'Link': 'Enlace',
+    'Search Placeholder': 'Buscar enlace por nombre corto...'
   }
 }
 

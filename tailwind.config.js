@@ -14,7 +14,8 @@ export default {
       },
       colors: {
         'black-hue': '#222C34',
-        'white-hue': '#FEFEFE'
+        'white-hue': '#FEFEFE',
+        'shadow-blue': 'hsl(220, 100%, 80%)'
       },
       keyframes: {
         minimize: {
