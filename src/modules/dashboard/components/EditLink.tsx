@@ -43,7 +43,7 @@ export function EditLink({
       <form
         onSubmit={submit}
         ref={form}
-        className="animate-maximize bg-white-hue min-w-72 p-2 rounded-md flex flex-col"
+        className="animate-maximize bg-white-hue min-w-96 p-2 rounded-md flex flex-col"
       >
         <h3 className="text-lg">
           {t('Edit Title')} <span className="font-semibold">/{short}</span>
@@ -54,7 +54,7 @@ export function EditLink({
           type="text"
           name="long"
           id="link"
-          className="focus:outline-none border border-black p-1 rounded my-2"
+          className="focus:outline-none border border-black p-1 rounded my-4"
         />
 
         <div className="flex justify-between gap-2">

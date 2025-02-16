@@ -18,11 +18,10 @@ export default function CallbackGithub() {
         console.error('Error fetching user data:', e)
         navigate('/signin', { replace: true })
       })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
-    <main className="min-h-screen flex flex-col justify-center items-center">
+    <main className="bg-pattern min-h-screen flex flex-col justify-center items-center">
       <FireIcon />
       <h2 className="font-semibold text-center">Loading...</h2>
     </main>
