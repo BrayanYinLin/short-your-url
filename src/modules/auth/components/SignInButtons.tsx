@@ -6,11 +6,6 @@ export const GoogleSignInButton = () => {
   const { t } = useTranslationStore()
   const handleSignIn = async () => {
     const response = await fetch(`${ENDPOINTS.AUTH}google`)
-    if (!response.ok) {
-      const { msg } = await response.json()
-      console.error(msg)
-    }
-
     const { link } = await response.json()
     window.location.href = link
   }

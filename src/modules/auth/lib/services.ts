@@ -51,7 +51,8 @@ export const authenticateGoogle = async ({ search }: { search: string }) => {
       )
 
       if (!response.ok) {
-        throw new GoogleAuthenticationError('Error fetching user data')
+        const { msg } = await response.json()
+        throw new GoogleAuthenticationError(msg)
       }
 
       const user = await response.json()
@@ -59,7 +60,9 @@ export const authenticateGoogle = async ({ search }: { search: string }) => {
 
       return user
     } catch (e) {
-      console.error('Error fetching user data:', e)
+      if (e instanceof GoogleAuthenticationError) {
+        console.error(e.message)
+      }
       throw e
     }
   }
