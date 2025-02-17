@@ -40,7 +40,7 @@ export const authenticateGoogle = async ({ search }: { search: string }) => {
   if (code) {
     try {
       const response = await fetch(
-        `${ENDPOINTS.AUTH}auth/google/callback?code=${code}`,
+        `${ENDPOINTS.AUTH}google/callback?code=${code}`,
         {
           method: 'GET',
           credentials: 'include',
