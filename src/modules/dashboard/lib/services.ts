@@ -9,7 +9,7 @@ import { refreshUser } from '@/lib/services'
 import { User } from 'root/types'
 import { Link } from 'root/types'
 
-const getUserAuthorizedLINK = async (): Promise<Link[]> => {
+const getUserAuthorizedLink = async (): Promise<Link[]> => {
   const response = await fetch(`${ENDPOINTS.LINK}user/`, {
     method: 'GET',
     credentials: 'include'
@@ -31,13 +31,13 @@ const getUserAuthorizedLINK = async (): Promise<Link[]> => {
 
 export const getUserLinks = async (): Promise<Link[]> => {
   try {
-    return await getUserAuthorizedLINK()
+    return await getUserAuthorizedLink()
   } catch (e) {
     //  Verifica que el error se deba a que el access token expiro
     if (e instanceof UserNotAuthorized) {
       try {
         await refreshUser() //  trata de renovarlo
-        return await getUserAuthorizedLINK() //  vuelve a enviar los LINK
+        return await getUserAuthorizedLink() //  vuelve a enviar los LINK
       } catch (e) {
         console.error(e)
         throw e
@@ -49,7 +49,7 @@ export const getUserLinks = async (): Promise<Link[]> => {
 }
 
 export const logoutUser = async (): Promise<boolean> => {
-  const response = await fetch(`${ENDPOINTS.AUTH}/logout`, {
+  const response = await fetch(`${ENDPOINTS.AUTH}logout`, {
     method: 'GET',
     credentials: 'include'
   })
