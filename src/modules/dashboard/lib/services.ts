@@ -50,7 +50,7 @@ export const getUserLinks = async (): Promise<Link[]> => {
 
 export const logoutUser = async (): Promise<boolean> => {
   const response = await fetch(`${ENDPOINTS.AUTH}logout`, {
-    method: 'GET',
+    method: 'POST',
     credentials: 'include'
   })
 
