@@ -9,35 +9,35 @@ import { refreshUser } from '@/lib/services'
 import { User } from 'root/types'
 import { Link } from 'root/types'
 
-const getUserAuthorizedLinks = async (): Promise<Link[]> => {
-  const response = await fetch(`${ENDPOINTS.LINKS}user/`, {
+const getUserAuthorizedLINK = async (): Promise<Link[]> => {
+  const response = await fetch(`${ENDPOINTS.LINK}user/`, {
     method: 'GET',
     credentials: 'include'
   })
 
   if (!response.ok) {
     if (response.status !== 401) {
-      throw new UnexpectedError('Unexpected error getting links')
+      throw new UnexpectedError('Unexpected error getting LINK')
     }
 
     const { msg } = await response.json()
     throw new UserNotAuthorized(msg)
   }
 
-  const links: Link[] = await response.json()
+  const LINK: Link[] = await response.json()
 
-  return links
+  return LINK
 }
 
-export const getUserLinks = async (): Promise<Link[]> => {
+export const getUserLINK = async (): Promise<Link[]> => {
   try {
-    return await getUserAuthorizedLinks()
+    return await getUserAuthorizedLINK()
   } catch (e) {
     //  Verifica que el error se deba a que el access token expiro
     if (e instanceof UserNotAuthorized) {
       try {
         await refreshUser() //  trata de renovarlo
-        return await getUserAuthorizedLinks() //  vuelve a enviar los links
+        return await getUserAuthorizedLINK() //  vuelve a enviar los LINK
       } catch (e) {
         console.error(e)
         throw e
@@ -70,7 +70,7 @@ export const createLink = async ({
   long: string
   short: string
 }) => {
-  const response = await fetch(`${ENDPOINTS.LINKS}`, {
+  const response = await fetch(`${ENDPOINTS.LINK}`, {
     method: 'POST',
     credentials: 'include',
     headers: {
@@ -93,7 +93,7 @@ export const createLink = async ({
 }
 
 export const deleteLink = async ({ id }: Required<Pick<User, 'id'>>) => {
-  const response = await fetch(`${ENDPOINTS.LINKS}${id}`, {
+  const response = await fetch(`${ENDPOINTS.LINK}${id}`, {
     method: 'DELETE',
     credentials: 'include'
   })
@@ -105,7 +105,7 @@ export const deleteLink = async ({ id }: Required<Pick<User, 'id'>>) => {
 }
 
 export const editLink = async ({ id, long }: Pick<Link, 'id' | 'long'>) => {
-  const response = await fetch(`${ENDPOINTS.LINKS}${id}`, {
+  const response = await fetch(`${ENDPOINTS.LINK}${id}`, {
     method: 'PATCH',
     credentials: 'include',
     headers: {
