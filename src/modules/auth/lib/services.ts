@@ -1,3 +1,4 @@
+import { ENDPOINTS } from '@/lib/definitions'
 import { GoogleAuthenticationError } from '@/lib/errors'
 
 export const getGithubData = async ({ search }: { search: string }) => {
@@ -7,7 +8,7 @@ export const getGithubData = async ({ search }: { search: string }) => {
   if (code) {
     try {
       const response = await fetch(
-        `http://localhost:5373/api/auth/github/callback?code=${code}`,
+        `${ENDPOINTS.AUTH}github/callback?code=${code}`,
         {
           method: 'GET',
           credentials: 'include',
@@ -39,7 +40,7 @@ export const authenticateGoogle = async ({ search }: { search: string }) => {
   if (code) {
     try {
       const response = await fetch(
-        `http://localhost:5373/api/auth/google/callback?code=${code}`,
+        `${ENDPOINTS.AUTH}auth/google/callback?code=${code}`,
         {
           method: 'GET',
           credentials: 'include',
