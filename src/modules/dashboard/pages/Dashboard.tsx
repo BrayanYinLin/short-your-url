@@ -21,8 +21,8 @@ export function Dashboard() {
           />,
           document.body
         )}
-      <section className="h-full max-w-[700px] mx-auto py-5 flex">
-        <div className="w-[350px] flex flex-col">
+      <section className="h-full max-w-[700px] mx-auto py-5 flex flex-col md:flex-row">
+        <div className="w-full md:w-[350px] flex flex-col">
           <header className="float-left col-start-1 flex items-start justify-start gap-2 mb-2">
             {user && <HeaderProfile user={user} />}
           </header>

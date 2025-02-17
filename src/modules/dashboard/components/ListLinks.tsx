@@ -23,18 +23,19 @@ export function ListLinks() {
     <Suspense fallback={<div>Loading...</div>}>
       <section
         id="list-card"
-        className="w-1/2 flex flex-col gap-6 px-6 pb-4 overflow-y-scroll"
+        className="md:w-1/2 flex flex-col gap-6 px-6 pb-4 overflow-y-scroll"
       >
         <FilterBar action={changeTerm} />
-        {linksFiltered.map(({ id, long, short, clicks }) => (
-          <LinkCard
-            key={id!}
-            id={id!}
-            long={long}
-            short={short}
-            clicks={clicks}
-          />
-        ))}
+        {(linksFiltered.length > 0 || linksFiltered) &&
+          linksFiltered.map(({ id, long, short, clicks }) => (
+            <LinkCard
+              key={id!}
+              id={id!}
+              long={long}
+              short={short}
+              clicks={clicks}
+            />
+          ))}
       </section>
     </Suspense>
   )
