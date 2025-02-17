@@ -29,7 +29,7 @@ const getUserAuthorizedLINK = async (): Promise<Link[]> => {
   return LINK
 }
 
-export const getUserLINK = async (): Promise<Link[]> => {
+export const getUserLinks = async (): Promise<Link[]> => {
   try {
     return await getUserAuthorizedLINK()
   } catch (e) {

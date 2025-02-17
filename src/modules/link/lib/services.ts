@@ -3,7 +3,7 @@ import { LinkError } from '@/lib/errors'
 import { Link } from 'root/types'
 
 export const getLinkByShort = async ({ name }: { name: string }) => {
-  const response = await fetch(`${ENDPOINTS.LINKS}?short=${name}`, {
+  const response = await fetch(`${ENDPOINTS.LINK}?short=${name}`, {
     method: 'GET',
     credentials: 'include'
   })
