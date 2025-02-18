@@ -1,6 +1,5 @@
 import { Suspense, useEffect } from 'react'
 import { LinkCard } from './LinkCard'
-import '../styles/list-cards.css'
 import { useLinksStore } from '../lib/stores'
 import { useNavigate } from 'react-router'
 import { FilterBar } from './FilterBar'
@@ -21,10 +20,7 @@ export function ListLinks() {
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <section
-        id="list-card"
-        className="md:w-1/2 flex flex-col gap-6 px-6 pb-4 overflow-y-scroll"
-      >
+      <section className="mx-3 xs:mx-2 tablet:mx-0 md:px-6 flex flex-col gap-6 pb-4 overflow-y-scroll">
         <FilterBar action={changeTerm} />
         {(linksFiltered.length > 0 || linksFiltered) &&
           linksFiltered.map(({ id, long, short, clicks }) => (

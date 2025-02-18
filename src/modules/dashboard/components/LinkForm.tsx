@@ -91,7 +91,7 @@ export default function LinkForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white-hue col-start-1 min-h-12 flex flex-col border border-black rounded-md p-3 gap-2"
+      className="mx-3 xs:mx-2 tablet:mx-0 mb-4 bg-white-hue col-start-1 min-h-12 flex flex-col border border-black rounded-md p-3 gap-2"
     >
       <h2 className="font-bold text-lg">{t('Create Shortened Link')}</h2>
       <label htmlFor="short">Short</label>

@@ -40,6 +40,10 @@ export default {
         maximize: 'maximize 0.3s ease',
         appear: 'appear 0.5s ease',
         disappear: 'disappear 0.5s ease'
+      },
+      screens: {
+        xs: '425px',
+        tablet: '700px'
       }
     },
   },

@@ -43,7 +43,7 @@ export function EditLink({
       <form
         onSubmit={submit}
         ref={form}
-        className="animate-maximize bg-white-hue min-w-96 p-2 rounded-md flex flex-col"
+        className="animate-maximize bg-white-hue w-72 xs:w-96 p-2 rounded-md flex flex-col"
       >
         <h3 className="text-lg">
           {t('Edit Title')} <span className="font-semibold">/{short}</span>

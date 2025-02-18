@@ -35,7 +35,7 @@ export default function Home() {
 
       <h1 className="font-bold text-4xl my-2">Short Your URL</h1>
 
-      <section className="m-4 flex gap-2">
+      <section className="m-4 flex flex-col xs:flex-row gap-2">
         <button
           type="button"
           className="border-[1px] border-black bg-[#222] text-white rounded-[5px] px-6 py-2 text-xl font-semibold"

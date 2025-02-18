@@ -41,7 +41,7 @@ export function DeleteModal({
   return (
     <Overlay>
       <section
-        className="animate-maximize bg-white rounded-md min-w-96 p-2"
+        className="animate-maximize bg-white rounded-md w-72 xs:w-96 p-2"
         ref={modal}
       >
         <h3 className="text-lg font-semibold">
