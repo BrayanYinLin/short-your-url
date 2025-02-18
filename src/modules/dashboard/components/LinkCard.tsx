@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { Link } from 'root/types'
 import { DeleteModal } from './DeleteModal'
-import { ORIGINS } from '@/lib/definitions'
+import { WEBSITE } from '@/lib/definitions'
 import { EditLink } from './EditLink'
 
 export function LinkCard({ id, long, short, clicks }: Link) {
@@ -18,7 +18,7 @@ export function LinkCard({ id, long, short, clicks }: Link) {
   const [editModal, setEditModal] = useState<boolean>(false)
 
   const copyToClipboard = (link: string) => {
-    const url = `${ORIGINS.LOCAL}${link}`
+    const url = `${WEBSITE}${link}`
     navigator.clipboard.writeText(url)
     setCopied(true)
   }
