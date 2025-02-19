@@ -89,38 +89,36 @@ export default function LinkForm() {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="mx-3 xs:mx-2 tablet:mx-0 mb-4 bg-white-hue col-start-1 min-h-12 flex flex-col border border-black rounded-md p-3 gap-2"
-    >
+    <section className="w-full mb-4 bg-white flex flex-col border border-slate-300 shadow-sm rounded-lg p-3 gap-2">
       <h2 className="font-bold text-lg">{t('Create Shortened Link')}</h2>
-      <label htmlFor="short">Short</label>
-      <input
-        type="text"
-        name="short"
-        id="short"
-        placeholder="My-link-short"
-        className="focus:outline-none border border-black-hue p-1 rounded"
-        ref={shortInput}
-        onChange={handleShortTyping}
-        required
-      />
-      <label htmlFor="long">Link</label>
-      <input
-        type="text"
-        name="long"
-        id="long"
-        placeholder="https://example.com"
-        className="focus:outline-none border border-black-hue p-1 rounded"
-        ref={linkInput}
-        onChange={handleURLTyping}
-        required
-      />
-      <input
-        className="w-full p-1 rounded text-lg text-white font-semibold bg-black-hue border border-black-hue hover:cursor-pointer"
-        type="submit"
-        value={t('Shorten')}
-      />
-    </form>
+      <form onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-2">
+        <input
+          type="text"
+          name="short"
+          id="short"
+          placeholder="Short"
+          className="flex-1 border border-slate-300 shadow-sm rounded-md p-2 focus:outline-none focus:ring-1 focus:ring-black-hue"
+          ref={shortInput}
+          onChange={handleShortTyping}
+          required
+        />
+        <input
+          type="text"
+          name="long"
+          id="long"
+          placeholder="URL"
+          className="flex-1 border border-slate-300 shadow-sm rounded-md p-2 focus:outline-none focus:ring-1 focus:ring-black-hue"
+          ref={linkInput}
+          onChange={handleURLTyping}
+          required
+        />
+        <button
+          type="submit"
+          className="bg-black-hue text-white font-semibold px-4 py-2 rounded-md"
+        >
+          {t('Shorten')}
+        </button>
+      </form>
+    </section>
   )
 }
