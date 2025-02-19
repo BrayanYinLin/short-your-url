@@ -46,7 +46,7 @@ export function Toast({ title, message, toggle }: ToastProps) {
 
   return (
     <article
-      className="animate-appear md:w-72 fixed bottom-2 left-2 border border-black-hue p-2 bg-white-hue rounded-md"
+      className="animate-appear w-72 md:w-96 fixed bottom-2 left-2 border border-slate-300 shadow-sm p-2 bg-white-hue rounded-md"
       ref={toastElement}
     >
       <div className="flex justify-between">

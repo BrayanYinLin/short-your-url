@@ -38,7 +38,7 @@ export default function Home() {
       <section className="m-4 flex flex-col xs:flex-row gap-2">
         <button
           type="button"
-          className="border-[1px] border-black bg-[#222] text-white rounded-[5px] px-6 py-2 text-xl font-semibold"
+          className="rounded-md bg-[#222] text-white px-6 py-2 text-xl font-semibold"
           onClick={handleStart}
         >
           {t('Get Started')}
@@ -46,7 +46,7 @@ export default function Home() {
         <a
           href="#"
           type="button"
-          className="border-[1px] bg-white-hue border-black rounded-[5px] px-6 py-2 flex items-center gap-2 text-xl font-semibold"
+          className="bg-white-hue border border-slate-300 shadow-sm rounded-md px-6 py-2 flex items-center gap-2 text-xl font-semibold"
         >
           <GitHubIcon /> <span>{t('Star on Github')}</span>
         </a>

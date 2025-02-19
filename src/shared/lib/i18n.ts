@@ -26,7 +26,7 @@ export const resource = {
     'Create Shortened Link': 'Crear enlace recortado',
     'Shorten': 'Recortar link',
     'Creating Link Error': 'Ocurrió un error al crear el enlace',
-    'New Link Confirmation': 'Enlace corto creado exitósamente',
+    'New Link Confirmation': 'Enlace recortado exitósamente',
     'Delete Prompt': '¿Quieres borrar ',
     Delete: 'Eliminar enlace',
     Cancel: 'Cancelar',

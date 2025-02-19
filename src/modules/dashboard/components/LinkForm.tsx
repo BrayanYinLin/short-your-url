@@ -64,7 +64,7 @@ export default function LinkForm() {
     if (shortInput.current!.value === '') {
       shortInput.current?.classList.replace(
         'border-[#d3102f]',
-        'border-black-hue'
+        'border-slate-300'
       )
       return
     }
@@ -72,11 +72,11 @@ export default function LinkForm() {
     if (shortRegex.test(shortInput.current!.value)) {
       shortInput.current?.classList.replace(
         'border-[#d3102f]',
-        'border-black-hue'
+        'border-slate-300'
       )
     } else {
       shortInput.current?.classList.replace(
-        'border-black-hue',
+        'border-slate-300',
         'border-[#d3102f]'
       )
     }
@@ -89,11 +89,11 @@ export default function LinkForm() {
     if (urlRegex.test(linkInput.current!.value)) {
       linkInput.current?.classList.replace(
         'border-[#d3102f]',
-        'border-black-hue'
+        'border-slate-300'
       )
     } else {
       linkInput.current?.classList.replace(
-        'border-black-hue',
+        'border-slate-300',
         'border-[#d3102f]'
       )
     }
@@ -108,7 +108,7 @@ export default function LinkForm() {
           name="short"
           id="short"
           placeholder="Short"
-          className="flex-1 border border-slate-300 shadow-sm rounded-md p-2 focus:outline-none focus:ring-1 focus:ring-black-hue"
+          className="flex-1 border border-slate-300 shadow-sm rounded-md p-2 focus:outline-none"
           ref={shortInput}
           onChange={handleShortTyping}
           required
@@ -118,7 +118,7 @@ export default function LinkForm() {
           name="long"
           id="long"
           placeholder="URL"
-          className="flex-1 border border-slate-300 shadow-sm rounded-md p-2 focus:outline-none focus:ring-1 focus:ring-black-hue"
+          className="flex-1 border border-slate-300 shadow-sm rounded-md p-2 focus:outline-none"
           ref={linkInput}
           onChange={handleURLTyping}
           required
