@@ -21,6 +21,10 @@ export default function LinkForm() {
       return
     }
 
+    if (short === 'dashboard' || short === 'signin' || short === 'auth') {
+      return
+    }
+
     try {
       // eslint-disable-next-line no-useless-escape
       const shortRegex = /^[A-Za-z0-9\-\+\*\_]*$/g
@@ -28,7 +32,6 @@ export default function LinkForm() {
         /^(https?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(:\d+)?(\/[^\s?#]*)?(\?[^\s#]*)?(#[^\s]*)?$/g
 
       if (!shortRegex.test(short) || !urlRegex.test(long)) {
-        console.log('no ha permitido')
         return
       }
 
@@ -57,6 +60,14 @@ export default function LinkForm() {
   const handleShortTyping = () => {
     // eslint-disable-next-line no-useless-escape
     const shortRegex = /^[A-Za-z0-9\-\+\*\_]+$/g
+
+    if (shortInput.current!.value === '') {
+      shortInput.current?.classList.replace(
+        'border-[#d3102f]',
+        'border-black-hue'
+      )
+      return
+    }
 
     if (shortRegex.test(shortInput.current!.value)) {
       shortInput.current?.classList.replace(
