@@ -11,18 +11,18 @@ export function FilterBar({ action }: Props) {
   const input = useRef<HTMLInputElement | null>(null)
 
   return (
-    <section className="sticky top-0 bg-white flex items-center py-1 border border-black rounded-md">
+    <section className="sticky top-0 mb-4 bg-white flex items-center py-1 border border-slate-300 shadow-sm rounded-md">
       <input
         type="text"
         name="filter"
-        className="w-[85%] px-1 focus:outline-none"
+        className="flex-1 px-1 focus:outline-none"
         placeholder={t('Search Placeholder')}
         ref={input}
       />
       <button
         type="button"
         aria-label="search links"
-        className="w-[15%] px-0"
+        className="w-11 pr-3 focus:outline-none"
         onClick={() => action({ term: input.current?.value || '' })}
       >
         <MagnifiyingGlassIcon />
