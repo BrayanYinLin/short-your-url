@@ -21,7 +21,7 @@ export function Dashboard() {
           />,
           document.body
         )}
-      <section className="h-full xs:max-w-[90%] md:max-w-[70%] mx-auto py-5 flex flex-col">
+      <section className="h-full xs:max-w-[90%] md:max-w-[70%] mx-2 xs:mx-auto py-5 flex flex-col">
         <div className="w-full flex flex-col">
           {user && <HeaderProfile user={user} />}
           <LinkForm />

@@ -16,7 +16,9 @@ export const resource = {
     'Logout': 'Logout',
     'Edit Title': 'Edit',
     'Link': 'Link',
-    'Search Placeholder': 'Search link by short name...'
+    'Search Placeholder': 'Search link by short name...',
+    'Not found': 'Link was not found',
+    'Back home': 'Go Home'
   },
   es: {
     'Get Started': 'Empezar',
@@ -34,7 +36,9 @@ export const resource = {
     'Logout': 'Cerrar sesión',
     'Edit Title': 'Editar',
     'Link': 'Enlace',
-    'Search Placeholder': 'Buscar enlace por nombre corto...'
+    'Search Placeholder': 'Buscar enlace por nombre corto...',
+    'Not found': 'Enlace no encontrado',
+    'Back home': 'Ir a la raíz'
   }
 }
 

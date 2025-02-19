@@ -12,7 +12,7 @@ export function Redirect() {
 
     getLinkByShort({ name: short })
       .then(({ long }) => (window.location.href = long))
-      .catch(() => navigate('/'))
+      .catch(() => navigate('/not-found'))
   }, [])
   return (
     <main className="bg-pattern min-h-screen flex flex-col justify-center items-center">

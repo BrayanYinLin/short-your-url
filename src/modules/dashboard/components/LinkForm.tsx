@@ -21,7 +21,12 @@ export default function LinkForm() {
       return
     }
 
-    if (short === 'dashboard' || short === 'signin' || short === 'auth') {
+    if (
+      short === 'dashboard' ||
+      short === 'signin' ||
+      short === 'auth' ||
+      short === 'not-found'
+    ) {
       return
     }
 
@@ -85,6 +90,14 @@ export default function LinkForm() {
   const handleURLTyping = () => {
     const urlRegex =
       /^(https?:\/\/)([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(:\d+)?(\/[^\s]*)?$/
+
+    if (linkInput.current!.value === '') {
+      linkInput.current?.classList.replace(
+        'border-[#d3102f]',
+        'border-slate-300'
+      )
+      return
+    }
 
     if (urlRegex.test(linkInput.current!.value)) {
       linkInput.current?.classList.replace(

@@ -8,6 +8,7 @@ import './index.css'
 import { Dashboard } from './modules/dashboard/pages/Dashboard'
 import CallbackGoogle from 'modules/auth/pages/CallbackGoogle'
 import { Redirect } from 'modules/link/pages/Redirect'
+import { NotFound } from 'modules/link/pages/NotFound'
 
 createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
@@ -16,6 +17,7 @@ createRoot(document.getElementById('root')!).render(
         <Route index element={<Home />} />
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="signin" element={<SignIn />} />
+        <Route path="not-found" element={<NotFound />} />
         <Route path=":short" element={<Redirect />} />
       </Route>
 
