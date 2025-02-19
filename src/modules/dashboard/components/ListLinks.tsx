@@ -20,7 +20,7 @@ export function ListLinks() {
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <section className="mx-3 xs:mx-2 tablet:mx-0 md:px-6 flex flex-col gap-6 pb-4 overflow-y-scroll">
+      <section className="mx-3 xs:mx-2 tablet:mx-0 md:px-6 md:mx-0 flex flex-col gap-6 pb-4 overflow-y-scroll">
         <FilterBar action={changeTerm} />
         {(linksFiltered.length > 0 || linksFiltered) &&
           linksFiltered.map(({ id, long, short, clicks }) => (
