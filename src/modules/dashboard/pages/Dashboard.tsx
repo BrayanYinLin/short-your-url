@@ -5,10 +5,15 @@ import { createPortal } from 'react-dom'
 import { Toast } from '../components/Toast'
 import { useToast } from '../hooks/useToast'
 import { useUser } from '../hooks/useUser'
+import { useEffect } from 'react'
 
 export function Dashboard() {
   const { user } = useUser()
   const { toast, setToast } = useToast()
+
+  useEffect(() => {
+    document.title = document.title + ' | Dashboard'
+  }, [])
 
   return (
     <main className="bg-low-opacity-pattern h-screen overflow-y-hidden">

@@ -19,7 +19,8 @@ export const resource = {
     'Search Placeholder': 'Search link by short name...',
     'Not found': 'Link was not found',
     'Back home': 'Go Home',
-    'Name Reserved': 'Name Reserved'
+    'Name Reserved': 'Name Reserved',
+    'Main Title': 'Short your URL'
   },
   es: {
     'Get Started': 'Empezar',
@@ -40,7 +41,8 @@ export const resource = {
     'Search Placeholder': 'Buscar enlace por nombre corto...',
     'Not found': 'Enlace no encontrado',
     'Back home': 'Ir a la raíz',
-    'Name Reserved': 'Nombre reservado'
+    'Name Reserved': 'Nombre reservado',
+    'Main Title': 'Acorta tu URL'
   }
 }
 
