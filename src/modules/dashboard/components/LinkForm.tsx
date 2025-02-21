@@ -27,6 +27,11 @@ export default function LinkForm() {
       short === 'auth' ||
       short === 'not-found'
     ) {
+      showToast({
+        title: t('Creating Link Error'),
+        message: t('Name Reserved'),
+        isError: true
+      })
       return
     }
 

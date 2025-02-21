@@ -7,7 +7,7 @@ export const resource = {
     'Continue GitHub': 'Continue with GitHub',
     'Create Shortened Link': 'Create shortened link',
     'Shorten': 'Shorten link',
-    'Creating Link Error': 'An error occurred while creating the link',
+    'Creating Link Error': 'Error creating link.',
     'New Link Confirmation': 'Short link successfully created',
     'Delete Prompt': 'Do you want to delete',
     Delete: 'Delete link',
@@ -18,7 +18,8 @@ export const resource = {
     'Link': 'Link',
     'Search Placeholder': 'Search link by short name...',
     'Not found': 'Link was not found',
-    'Back home': 'Go Home'
+    'Back home': 'Go Home',
+    'Name Reserved': 'Name Reserved'
   },
   es: {
     'Get Started': 'Empezar',
@@ -27,7 +28,7 @@ export const resource = {
     'Continue GitHub': 'Continuar con GitHub',
     'Create Shortened Link': 'Crear enlace recortado',
     'Shorten': 'Recortar link',
-    'Creating Link Error': 'Ocurrió un error al crear el enlace',
+    'Creating Link Error': 'Error creando link',
     'New Link Confirmation': 'Enlace recortado exitósamente',
     'Delete Prompt': '¿Quieres borrar ',
     Delete: 'Eliminar enlace',
@@ -38,7 +39,8 @@ export const resource = {
     'Link': 'Enlace',
     'Search Placeholder': 'Buscar enlace por nombre corto...',
     'Not found': 'Enlace no encontrado',
-    'Back home': 'Ir a la raíz'
+    'Back home': 'Ir a la raíz',
+    'Name Reserved': 'Nombre reservado'
   }
 }
 

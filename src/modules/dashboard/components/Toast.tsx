@@ -1,14 +1,22 @@
 import { CloseIcon } from '@/components/Icons'
+import { clsx } from '@/lib/utils'
 import { useEffect, useRef } from 'react'
 
 type ToastProps = {
   title: string
   message: string
+  isError: boolean
   toggle: () => void
 }
 
-export function Toast({ title, message, toggle }: ToastProps) {
+export function Toast({ title, message, isError, toggle }: ToastProps) {
   const toastElement = useRef<HTMLElement | null>(null)
+  const descriptionStyle = clsx({
+    stuff: 'text-xs overflow-hidden whitespace-nowrap overflow-ellipsis w-30',
+    first: 'text-black',
+    second: 'text-[#d3102f]',
+    conditional: !isError
+  })
 
   const handleClick = () => {
     toastElement.current?.classList.replace(
@@ -50,14 +58,21 @@ export function Toast({ title, message, toggle }: ToastProps) {
       ref={toastElement}
     >
       <div className="flex justify-between">
-        <p className="text-xl font-bold">{title}</p>
+        <p
+          className={clsx({
+            stuff: 'text-xl font-bold',
+            first: 'text-black',
+            second: 'text-[#d3102f]',
+            conditional: !isError
+          })}
+        >
+          {title}
+        </p>
         <button type="button" aria-label="close toast" onClick={handleClick}>
           <CloseIcon />
         </button>
       </div>
-      <p className="text-xs overflow-hidden whitespace-nowrap overflow-ellipsis w-30">
-        {message}
-      </p>
+      <p className={descriptionStyle}>{message}</p>
     </article>
   )
 }

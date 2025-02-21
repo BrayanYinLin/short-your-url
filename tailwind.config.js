@@ -10,7 +10,8 @@ export default {
         inter: ['Inter', 'system-ui', 'sans-serif']
       },
       backgroundImage: {
-        pattern: "url(/background.webp)"
+        pattern: "url(/background.webp)",
+        "low-opacity-pattern": "url(/background-low-opacity.webp)"
       },
       colors: {
         'black-hue': '#222C34',

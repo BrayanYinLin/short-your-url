@@ -16,3 +16,26 @@ export const findLanguagePreference = (): Language => {
 
   return navigatorPreference
 }
+
+interface ClsxProps {
+  stuff: string
+  first: string
+  second: string
+  conditional: boolean
+}
+
+/**
+ * clsx
+ * @param stuff first tailwind classes
+ * @param first first tailwind classes
+ * @param second second tailwind classes
+ * @param conditional condition to return the first one
+ * @returns boolean
+ */
+export const clsx = ({ stuff, first, second, conditional }: ClsxProps) => {
+  if (conditional) {
+    return first + ' ' + stuff
+  }
+
+  return second + ' ' + stuff
+}

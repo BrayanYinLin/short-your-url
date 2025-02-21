@@ -11,17 +11,18 @@ export function Dashboard() {
   const { toast, setToast } = useToast()
 
   return (
-    <main className="bg-pattern h-screen overflow-y-hidden">
+    <main className="bg-low-opacity-pattern h-screen overflow-y-hidden">
       {toast &&
         createPortal(
           <Toast
             title={toast.title}
             message={toast.message}
+            isError={toast.isError}
             toggle={() => setToast(null)}
           />,
           document.body
         )}
-      <section className="h-full xs:max-w-[90%] md:max-w-[70%] mx-2 xs:mx-auto py-5 flex flex-col">
+      <section className="h-full xs:max-w-[90%] md:max-w-[70%] xl:max-w-[50%] 2xl:max-w-[40%] min-[2560px]:max-w-[25%]  mx-2 xs:mx-auto py-5 flex flex-col">
         <div className="w-full flex flex-col">
           {user && <HeaderProfile user={user} />}
           <LinkForm />
