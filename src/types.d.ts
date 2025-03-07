@@ -4,6 +4,7 @@ export type Link = {
   clicks: number
   id?: string | undefined
   created_at?: string | undefined
+  expires_at?: string | undefined
 }
 
 export type User = {

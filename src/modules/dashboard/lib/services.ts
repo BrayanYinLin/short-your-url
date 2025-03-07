@@ -65,10 +65,12 @@ export const logoutUser = async (): Promise<boolean> => {
 
 export const createLink = async ({
   long,
-  short
+  short,
+  expires_at
 }: {
   long: string
   short: string
+  expires_at: string
 }) => {
   const response = await fetch(`${ENDPOINTS.LINK}`, {
     method: 'POST',
@@ -78,7 +80,8 @@ export const createLink = async ({
     },
     body: JSON.stringify({
       long,
-      short
+      short,
+      expires_at
     })
   })
 

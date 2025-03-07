@@ -148,6 +148,25 @@ export const LinkedInIcon = () => {
   )
 }
 
+export const LinkIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={24}
+      height={24}
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      className="icon icon-tabler icons-tabler-outline icon-tabler-link"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" />
+      <path d="m9 15 6-6M11 6l.463-.536a5 5 0 0 1 7.071 7.072L18 13M13 18l-.397.534a5.068 5.068 0 0 1-7.127 0 4.972 4.972 0 0 1 0-7.071L6 11" />
+    </svg>
+  )
+}
+
 export const ArrowCornerIcon = () => {
   return (
     <svg
@@ -449,6 +468,25 @@ export const RedirectingIcon = () => {
     >
       <path stroke="none" d="M0 0h24v24H0z" />
       <path d="M12 21v-4M12 13V9M12 5V3M10 21h4M8 5v4h11l2-2-2-2zM14 13v4H6l-2-2 2-2z" />
+    </svg>
+  )
+}
+
+export const TimerIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={24}
+      height={24}
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      className="icon icon-tabler icons-tabler-outline icon-tabler-clock-hour-10"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" />
+      <path d="M3 12a9 9 0 1 0 18 0 9 9 0 1 0-18 0M12 12l-3-2M12 7v5" />
     </svg>
   )
 }

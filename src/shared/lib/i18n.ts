@@ -20,7 +20,8 @@ export const resource = {
     'Not found': 'Link was not found',
     'Back home': 'Go Home',
     'Name Reserved': 'Name Reserved',
-    'Main Title': 'Short your URL'
+    'Main Title': 'Short your URL',
+    'Expires after': 'Expires after '
   },
   es: {
     'Get Started': 'Empezar',
@@ -42,7 +43,8 @@ export const resource = {
     'Not found': 'Enlace no encontrado',
     'Back home': 'Ir a la raíz',
     'Name Reserved': 'Nombre reservado',
-    'Main Title': 'Acorta tu URL'
+    'Main Title': 'Acorta tu URL',
+    'Expires after': 'Expira en '
   }
 }
 

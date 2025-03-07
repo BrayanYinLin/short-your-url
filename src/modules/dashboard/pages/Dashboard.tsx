@@ -16,7 +16,7 @@ export function Dashboard() {
   }, [])
 
   return (
-    <main className="bg-low-opacity-pattern h-screen overflow-y-hidden">
+    <main className="bg-low-opacity-pattern h-screen  overflow-y-scroll">
       {toast &&
         createPortal(
           <Toast

@@ -21,15 +21,16 @@ export function ListLinks() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <FilterBar action={changeTerm} />
-      <section className="tablet:mx-0 md:mx-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 pb-4 overflow-y-scroll">
+      <section className="tablet:mx-0 md:mx-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-3 gap-2 pb-4">
         {(linksFiltered.length > 0 || linksFiltered) &&
-          linksFiltered.map(({ id, long, short, clicks }) => (
+          linksFiltered.map(({ id, long, short, clicks, expires_at }) => (
             <LinkCard
               key={id!}
               id={id!}
               long={long}
               short={short}
               clicks={clicks}
+              expires_at={expires_at}
             />
           ))}
       </section>

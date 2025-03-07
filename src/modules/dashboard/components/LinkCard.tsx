@@ -11,8 +11,12 @@ import { Link } from 'root/types'
 import { DeleteModal } from './DeleteModal'
 import { WEBSITE } from '@/lib/definitions'
 import { EditLink } from './EditLink'
+import moment from 'moment'
+import { getExpirationWithTimezone } from '../lib/utils'
+import { useTranslationStore } from '@/lib/stores'
 
-export function LinkCard({ id, long, short, clicks }: Link) {
+export function LinkCard({ id, long, short, clicks, expires_at }: Link) {
+  const { t } = useTranslationStore()
   const [copied, setCopied] = useState(false)
   const [removeModal, setRemoveModal] = useState(false)
   const [editModal, setEditModal] = useState<boolean>(false)
@@ -85,9 +89,19 @@ export function LinkCard({ id, long, short, clicks }: Link) {
         </div>
       </section>
 
-      <p className="flex items-center text-xs">
-        <ClickIcon /> {clicks} Clicks
-      </p>
+      <section className="flex items-center justify-between">
+        <p className="flex items-center text-xs">
+          <ClickIcon /> {clicks} Clicks
+        </p>
+        {expires_at && (
+          <p className="text-xs font-medium overflow-hidden whitespace-nowrap overflow-ellipsis">
+            {t('Expires after')}
+            {moment(getExpirationWithTimezone(expires_at)).format(
+              'YYYY-MM-DD HH:mm'
+            )}
+          </p>
+        )}
+      </section>
     </article>
   )
 }

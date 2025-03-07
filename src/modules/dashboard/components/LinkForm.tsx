@@ -1,21 +1,28 @@
-import { FormEvent, useRef } from 'react'
+import { FormEvent, useRef, useState } from 'react'
 import { createLink } from '../lib/services'
 import { useLinksStore } from '../lib/stores'
 import { showToast } from '../lib/events'
 import { LinkError } from '@/lib/errors'
 import { useTranslationStore } from '@/lib/stores'
+import { LinkIcon, TimerIcon } from '@/components/Icons'
+import { getExpirationWithTimezone } from '../lib/utils'
+
+type LinkGenerationMode = 'CLASSIC' | 'TIMER' | 'COUNTER'
 
 export default function LinkForm() {
   const { t } = useTranslationStore()
+  const { fetchLinks } = useLinksStore()
+  const [linkGenerationMode, setLinkGenerationMode] =
+    useState<LinkGenerationMode>('CLASSIC')
   const shortInput = useRef<HTMLInputElement | null>(null)
   const linkInput = useRef<HTMLInputElement | null>(null)
-  const { fetchLinks } = useLinksStore()
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
-    const short = String(data.get('short'))
-    const long = String(data.get('long'))
+    const short = data.get('short')?.toString()
+    const long = data.get('long')?.toString()
+    const expiration = data.get('datetime')?.toString()
 
     if (!short || !long) {
       return
@@ -45,7 +52,8 @@ export default function LinkForm() {
         return
       }
 
-      const link = await createLink({ long, short })
+      const iso = getExpirationWithTimezone(expiration!)
+      const link = await createLink({ long, short, expires_at: iso! })
       await fetchLinks()
 
       shortInput.current!.value = ''
@@ -117,37 +125,77 @@ export default function LinkForm() {
     }
   }
 
+  const changeToExpirationTimeMode = () => {
+    setLinkGenerationMode('TIMER')
+  }
+
+  const changeToClassicMode = () => {
+    setLinkGenerationMode('CLASSIC')
+  }
+
   return (
-    <section className="w-full mb-4 bg-white flex flex-col border border-slate-300 shadow-sm rounded-lg p-3 gap-2">
-      <h2 className="font-bold text-lg">{t('Create Shortened Link')}</h2>
-      <form onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-2">
-        <input
-          type="text"
-          name="short"
-          id="short"
-          placeholder="Short"
-          className="flex-1 border border-slate-300 shadow-sm rounded-md p-2 focus:outline-none"
-          ref={shortInput}
-          onChange={handleShortTyping}
-          required
-        />
-        <input
-          type="text"
-          name="long"
-          id="long"
-          placeholder="URL"
-          className="flex-1 border border-slate-300 shadow-sm rounded-md p-2 focus:outline-none"
-          ref={linkInput}
-          onChange={handleURLTyping}
-          required
-        />
-        <button
-          type="submit"
-          className="bg-black-hue text-white font-semibold px-4 py-2 rounded-md"
+    <>
+      <section className="w-full mb-4 bg-white flex flex-col border border-slate-300 shadow-sm rounded-lg p-3 gap-2">
+        <section className="flex justify-between">
+          <h2 className="font-bold text-lg">{t('Create Shortened Link')}</h2>
+          <nav className="flex items-center border p-1 border-slate-300 shadow-sm rounded-md gap-2">
+            <button
+              type="button"
+              aria-label="classic link generation"
+              onClick={changeToClassicMode}
+            >
+              <LinkIcon />
+            </button>
+            <button
+              type="button"
+              aria-label="link with expirarion time"
+              onClick={changeToExpirationTimeMode}
+            >
+              <TimerIcon />
+            </button>
+          </nav>
+        </section>
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col md:flex-col gap-2"
         >
-          {t('Shorten')}
-        </button>
-      </form>
-    </section>
+          <input
+            type="text"
+            name="short"
+            id="short"
+            placeholder="Short"
+            className="flex-1 border border-slate-300 shadow-sm rounded-md p-2 focus:outline-none"
+            ref={shortInput}
+            onChange={handleShortTyping}
+            required
+          />
+          <input
+            type="text"
+            name="long"
+            id="long"
+            placeholder="URL"
+            className="flex-1 border border-slate-300 shadow-sm rounded-md p-2 focus:outline-none"
+            ref={linkInput}
+            onChange={handleURLTyping}
+            required
+          />
+          {linkGenerationMode === 'TIMER' && (
+            <input
+              type="datetime-local"
+              name="datetime"
+              id="datetime"
+              className="flex-1 border border-slate-300 shadow-sm rounded-md p-2 focus:outline-none"
+              placeholder="expiration time"
+            />
+          )}
+          <button
+            type="submit"
+            className="bg-black-hue text-white font-semibold px-4 py-2 rounded-md"
+          >
+            {t('Shorten')}
+          </button>
+        </form>
+      </section>
+    </>
   )
 }
